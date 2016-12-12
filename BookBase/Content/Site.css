@@ -1,0 +1,174 @@
+﻿
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.book-logo {
+    font-family: 'Bungee Inline', cursive;
+    font-size: 32px;
+    margin-left: 20px;
+}
+
+.preloader-space {
+    width: 100%;
+    text-align: center;
+    height: 40px;
+    margin-bottom: -40px;
+}
+
+#preloader {
+    position:fixed;
+    top: 0px;
+    display:none;
+    margin: 0 auto;
+    z-index: 1000;
+}
+
+#toast-container {
+  top: auto !important;
+  right: 7% !important;
+  bottom: 10%; 
+}
+
+.toast-info {
+    text-align: center;
+}
+
+span.form-error {
+    color: #c62828!important;
+}
+
+#content {
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.detail-title-box {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.detail-box {
+    margin-top: 64px;
+    margin-bottom: 64px;
+}
+
+.details-book-title {
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+.details-author-name {
+    color: #002655;
+    font-weight: bolder;
+    font-size: 18px;
+}
+
+input, select, textarea {
+    max-width: 600px;
+}
+
+.detail-books-box
+{
+    margin-top: 60px;
+    font-weight: bolder;
+    text-align: center;
+}
+
+.details-author-nobooks
+{
+    color: #b71c1c;
+    font-weight: bolder;
+    font-size: 18px;
+}
+
+#sidenav-overlay {
+    display: none;
+}
+
+.delete-info
+{
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
+footer {
+    background-color: #64b5f6;
+    color: #f7f7f7;
+    width: 100%;
+    position: fixed;
+    bottom: 0px;
+    height: 50px;
+    text-align: center;
+    z-index: 100;
+}
+
+.box-link {
+    width: 100%;
+    height: 220px;
+    background: rgba(255,255,255,1);
+    background: -moz-radial-gradient(center, ellipse cover, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 66%, rgba(237,237,237,1) 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(255,255,255,1)), color-stop(66%, rgba(246,246,246,1)), color-stop(100%, rgba(237,237,237,1)));
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 66%, rgba(237,237,237,1) 100%);
+    background: radial-gradient(ellipse at center, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 66%, rgba(237,237,237,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed', GradientType=1 );
+    margin-bottom: 80px;
+    -webkit-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
+}
+
+.icon-box i {
+    margin: 40px auto;
+    color: #42a5f5;
+}
+
+.title-box {
+    height: 50px;
+    width: 100%;
+    padding-top: 10px;
+}
+
+.icon-container {
+    margin-top: 100px;
+}
+
+.text-link {
+    color: #1f1f1f;
+    font-size: 18px;
+    padding-bottom: 10px;
+}
+
+.nav-extended
+{
+    position: fixed;
+    z-index: 100;
+}
+
+.detail-books-box h5 {
+    margin-top: 60px;
+    margin-bottom: 40px;
+}
+
+.delete-alert {
+    color: #d32f2f;
+}
+
+.no-records {
+    font-size: 18px;
+    margin-top: 60px;
+}
+
+.button-section {
+    margin-top: 70px;
+    margin-bottom: 50px;
+}

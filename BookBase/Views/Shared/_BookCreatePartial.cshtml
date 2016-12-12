@@ -1,0 +1,90 @@
+﻿@model BookBase.Models.Book
+
+<div class="animated fadeIn">
+    @using (Ajax.BeginForm("Create", null, new AjaxOptions { LoadingElementId = "preloader" }, new { @id = "form" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="row">
+            <div class="col s12">
+                <h4>Dodaj nową książkę</h4>
+                <br /> <br />
+                @Html.ValidationSummary(true, "", new { @class = "form-error" })
+
+                <div class="row">
+                    <form class="col s12">
+
+                        <div class="row">
+                            <div class="input-field col s12">
+                                @Html.EditorFor(model => model.Title)
+                                @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "active form-label" })
+                                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "form-error" })
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="input-field col s12">
+                                @Html.TextBoxFor(model => model.DateOfRelease, new { @placeholder = "Wybierz datę", @class = "datepicker", data_val_required = "Pole data jest wymagane.", data_val_date = "Pole Data Wydania musi być datą. (Format: dd/mm/yyyy)" })
+                                @Html.LabelFor(model => model.DateOfRelease, htmlAttributes: new { @class = "active" })
+                                @Html.ValidationMessageFor(model => model.DateOfRelease, "", new { @class = "form-error" })
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="input-field col s12">
+                                @Html.EditorFor(model => model.ISBN)
+                                @Html.LabelFor(model => model.ISBN, htmlAttributes: new { @class = "active form-label" })
+                                @Html.ValidationMessageFor(model => model.ISBN, "", new { @class = "form-error" })
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="input-field col s12">
+                                @Html.LabelFor(model => model.Author.Name, "Autor", htmlAttributes: new { @class = "active form-label" })
+                                @Html.EditorFor(model => model.Author.Name)
+                                @Html.ValidationMessageFor(model => model.Author.Name, "", new { @class = "form-error" })
+                            </div>
+                        </div>
+
+                        <div class="button-section">
+                            <div class="input-field col s12">
+                                <input type="submit" value="Dodaj" class="btn light-green" />
+                                @Ajax.ActionLink("Powrót do listy", "Index", "Book", null, new AjaxOptions
+                           {
+                               HttpMethod = "GET",
+                               InsertionMode = InsertionMode.Replace,
+                               UpdateTargetId = "content",
+                               LoadingElementId = "preloader",
+                           }, new { @class = "waves-effect waves-light btn grey darken-1", })
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    }
+
+</div>
+
+<script src="~/scripts/scripts.js"></script>
+
+<script>
+
+    $(".form-label").each(function () {
+        $(this).removeClass("active");
+    })
+
+    function BookCreateSuccesful() {
+        BookCreatedToast();
+        $.ajax({
+            url: "@Url.Action("Index", "Book")",
+            success: function (data) {
+                $("#content").html(data);
+                $("#preloader").css("display", "none");
+            }
+        })
+    }
+</script>
+
+

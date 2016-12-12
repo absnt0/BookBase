@@ -1,0 +1,80 @@
+﻿@model BookBase.Models.Author
+
+<div class="animated fadeIn">
+    <h4 class="center-align">Czy na pewno chcesz usunąć tego autora?</h4>
+    <h5 class="center-align">@Model.Name</h5>
+
+    <div class="delete-info">
+        <table class="bordered highlight">
+            <tr>
+                <td><strong>@Html.DisplayNameFor(model => model.Name)</strong></td>
+                <td>@Html.DisplayFor(model => model.Name)</td>
+            </tr>
+        </table>
+    </div>
+    @{
+        if (Model.HasBooks())
+        {
+            <div class="detail-books-box">
+                <h5 class="animated pulse infinite delete-alert">Wszystkie książki przypisane do tego autora zostaną usunięte!</h5>
+
+                <table class="bordered highlight">
+                    <thead>
+                        <tr>
+                            <th>Lp.</th>
+                            <th>Tytuł książki</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            int i = 1;
+                            foreach (var book in Model.Books)
+                            {
+                                <tr>
+                                    <td><strong>@i.</strong></td>
+                                    <td>@book.Title</td>
+                                </tr>
+                                i++;
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <br /><br />
+                            }
+    }
+
+    @using (Ajax.BeginForm("Delete", null, new AjaxOptions { LoadingElementId = "preloader", OnSuccess = "AuthorDeleteToast()" }, new { @id = "form" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Usuń" class="btn red darken-4" />
+            @Ajax.ActionLink("Powrót do listy", "Index", "Author", null, new AjaxOptions
+       {
+           HttpMethod = "GET",
+           InsertionMode = InsertionMode.Replace,
+           UpdateTargetId = "content",
+           LoadingElementId = "preloader",
+       }, new { @class = "waves-effect waves-light btn grey darken-1", })
+        </div>
+    }
+</div>
+
+<script>
+
+    function AuthorDeleteToast() {
+        Materialize.toast("<span class=\"toast-info\"><strong>Usunięto autora</strong> <br /> @Model.Name </span>", 3000);
+    }
+
+    function AuthorDeleteSuccesful() {
+        $.ajax({
+            url: "@Url.Action("Index", "Author")",
+            success: function (data) {
+                $("#content").html(data);
+                $("#preloader").css("display", "none");
+            }
+        })
+    }
+</script>
+

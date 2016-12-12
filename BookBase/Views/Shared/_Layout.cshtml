@@ -1,0 +1,149 @@
+﻿@using BookBase.Helpers
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>@ViewBag.Title - Najlepszy katalog książkowy</title>
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <link href="~/Content/animate.min.css" rel="stylesheet" />
+    <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+    <link type="text/css" rel="stylesheet" href="~/Content/materialize/css/materialize.min.css" media="screen,projection" />
+    <link href="https://fonts.googleapis.com/css?family=Bungee+Inline" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="preloader-space">
+        <div id="preloader" class="progress blue darken-1">
+            <div class="indeterminate blue lighten-5"></div>
+        </div>
+    </div>
+    <nav class="nav-extended blue lighten-2">
+        <div class="nav-wrapper">
+
+            @Ajax.ActionLink("BookBase", "Index", "Home", null, new AjaxOptions
+       {
+           HttpMethod = "GET",
+           InsertionMode = InsertionMode.Replace,
+           UpdateTargetId = "content",
+           LoadingElementId = "preloader",
+       }, new { @class = "book-logo" })
+            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li class="waves-effect waves-light">
+                    @Ajax.RawActionLink("<i class=\"tiny material-icons\">home</i>", "Index", "Home", null, new AjaxOptions
+               {
+                   HttpMethod = "GET",
+                   InsertionMode = InsertionMode.Replace,
+                   UpdateTargetId = "content",
+                   LoadingElementId = "preloader",
+               }, null)
+                </li>
+                <li class="waves-effect waves-light">
+                    @Ajax.ActionLink("Lista książek", "Index", "Book", new AjaxOptions
+               {
+                   HttpMethod = "GET",
+                   InsertionMode = InsertionMode.Replace,
+                   UpdateTargetId = "content",
+                   LoadingElementId = "preloader",
+               })
+                </li>
+                <li class="waves-effect waves-light">
+                    @Ajax.ActionLink("Lista autorów", "Index", "Author", new AjaxOptions
+               {
+                   HttpMethod = "GET",
+                   InsertionMode = InsertionMode.Replace,
+                   UpdateTargetId = "content",
+                   LoadingElementId = "preloader",
+               })
+                </li>
+                <li class="waves-effect waves-light">
+                    @Ajax.ActionLink("Dodaj książkę", "Create", "Book", new AjaxOptions
+               {
+                   HttpMethod = "GET",
+                   InsertionMode = InsertionMode.Replace,
+                   UpdateTargetId = "content",
+                   LoadingElementId = "preloader",
+               })
+                </li>
+                <li class="waves-effect waves-light">
+                    @Ajax.ActionLink("Dodaj autora", "Create", "Author", new AjaxOptions
+               {
+                   HttpMethod = "GET",
+                   InsertionMode = InsertionMode.Replace,
+                   UpdateTargetId = "content",
+                   LoadingElementId = "preloader",
+               })
+                </li>
+
+            </ul>
+            <ul class="side-nav" id="mobile-demo">
+                <li class="waves-effect waves-light">
+                    @Ajax.RawActionLink("<i class=\"tiny material-icons\">home</i>", "Index", "Home", null, new AjaxOptions
+               {
+                   HttpMethod = "GET",
+                   InsertionMode = InsertionMode.Replace,
+                   UpdateTargetId = "content",
+                   LoadingElementId = "preloader",
+               }, null)
+                </li>
+                <li>
+                    @Ajax.ActionLink("Lista książek", "Index", "Book", new AjaxOptions
+               {
+                   HttpMethod = "GET",
+                   InsertionMode = InsertionMode.Replace,
+                   UpdateTargetId = "content",
+                   LoadingElementId = "preloader",
+               })
+                </li>
+                <li>
+                    @Ajax.ActionLink("Lista autorów", "Index", "Author", new AjaxOptions
+               {
+                   HttpMethod = "GET",
+                   InsertionMode = InsertionMode.Replace,
+                   UpdateTargetId = "content",
+                   LoadingElementId = "preloader",
+               })
+                </li>
+                <li>
+                    @Ajax.ActionLink("Dodaj książkę", "Create", "Book", new AjaxOptions
+               {
+                   HttpMethod = "GET",
+                   InsertionMode = InsertionMode.Replace,
+                   UpdateTargetId = "content",
+                   LoadingElementId = "preloader",
+               })
+                </li>
+                <li>
+                    @Ajax.ActionLink("Dodaj autora", "Create", "Author", new AjaxOptions
+               {
+                   HttpMethod = "GET",
+                   InsertionMode = InsertionMode.Replace,
+                   UpdateTargetId = "content",
+                   LoadingElementId = "preloader",
+               })
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div id="content">
+            @RenderBody()
+        </div>
+    </div>
+    <footer>
+        <p>&copy; @DateTime.Now.Year - BookBase</p>
+    </footer>
+
+    <script src="~/scripts/jquery-2.1.1.js"></script>
+    <script src="~/scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="~/scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/scripts/jquery.validate.js"></script>
+    <script src="~/scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/scripts/materialize/materialize.min.js"></script>
+    <script>$(".button-collapse").sideNav();</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+﻿@model BookBase.Models.Book
+
+<div class="animated fadeIn">
+    <div class="detail-box">
+        <div class="detail-title-box">
+            <h5>Szczegóły książki</h5>
+            <p><span class="details-book-title">@Model.Title</span> - <span class="details-author-name">@Model.Author.Name</span></p>
+        </div>
+
+        <table class="bordered highlight">
+            <tr>
+                <td><strong>@Html.DisplayNameFor(model => model.Title)</strong></td>
+                <td>@Html.DisplayFor(model => model.Title)</td>
+            </tr>
+            <tr>
+                <td><strong>@Html.DisplayNameFor(model => model.Author.Name)</strong></td>
+                <td>@Html.DisplayFor(model => model.Author.Name)</td>
+            </tr>
+            <tr>
+                <td><strong>@Html.DisplayNameFor(model => model.DateOfRelease)</strong></td>
+                <td>@Html.DisplayFor(model => model.DateOfRelease)</td>
+            </tr>
+            <tr>
+                <td><strong>@Html.DisplayNameFor(model => model.ISBN)</strong></td>
+                <td>@Html.DisplayFor(model => model.ISBN)</td>
+            </tr>
+        </table>
+    </div>
+    <p>
+        @Ajax.ActionLink("Edytuj", "Edit", new { id = Model.Id }, new AjaxOptions
+   {
+       HttpMethod = "GET",
+       InsertionMode = InsertionMode.Replace,
+       UpdateTargetId = "content",
+       LoadingElementId = "preloader",
+   }, new { @class = "waves-effect waves-light btn light-blue", })
+        @Ajax.ActionLink("Powrót do listy", "Index", "Book", null, new AjaxOptions
+   {
+       HttpMethod = "GET",
+       InsertionMode = InsertionMode.Replace,
+       UpdateTargetId = "content",
+       LoadingElementId = "preloader",
+   }, new { @class = "waves-effect waves-light btn grey darken-1", })
+    </p>
+</div>
+
+

@@ -1,0 +1,62 @@
+﻿@using BookBase.Helpers
+
+<div class="row icon-container">
+    <div class="col s12 m6 l3 align-center">
+
+
+        @Ajax.RawActionLink("<div class=\"box-link center-align animated zoomIn\">" +
+        "<div class=\"icon-box\"><i class=\"large material-icons\">list</i></div>" +
+        "<div class=\"title-box\">" +
+            "Lista książek" +
+        "</div>" +
+    "</div>", "Index", "Book", null, new AjaxOptions
+    {
+        HttpMethod = "GET",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "content",
+        LoadingElementId = "preloader",
+    }, new { @class = "text-link" })
+    </div>
+    <div class="col s12 m6 l3">
+        @Ajax.RawActionLink("<div class=\"box-link center-align animated zoomIn\">" +
+        "<div class=\"icon-box\"><i class=\"large material-icons\">people</i></div>" +
+        "<div class=\"title-box\">" +
+            "Lista autorów" +
+        "</div>" +
+    "</div>", "Index", "Author", null, new AjaxOptions
+    {
+        HttpMethod = "GET",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "content",
+        LoadingElementId = "preloader",
+    }, new { @class = "text-link" })
+    </div>
+    <div class="col s12 m6 l3">
+        @Ajax.RawActionLink("<div class=\"box-link center-align animated zoomIn\">" +
+        "<div class=\"icon-box\"><i class=\"large material-icons\">add</i></div>" +
+        "<div class=\"title-box\">" +
+            "Dodaj książkę" +
+        "</div>" +
+    "</div>", "Create", "Book", null, new AjaxOptions
+    {
+        HttpMethod = "GET",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "content",
+        LoadingElementId = "preloader",
+    }, new { @class = "text-link" })
+    </div>
+    <div class="col s12 m6 l3">
+        @Ajax.RawActionLink("<div class=\"box-link center-align animated zoomIn\">" +
+        "<div class=\"icon-box\"><i class=\"large material-icons\">person</i></div>" +
+        "<div class=\"title-box\">" +
+            "Dodaj autora" +
+        "</div>" +
+    "</div>", "Create", "Author", null, new AjaxOptions
+    {
+        HttpMethod = "GET",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "content",
+        LoadingElementId = "preloader",
+    }, new { @class = "text-link" })
+    </div>
+</div>

@@ -1,0 +1,84 @@
+﻿@model IEnumerable<BookBase.Models.Author>
+@using BookBase.Helpers
+
+<div class="animated fadeIn">
+    <p>
+        @Ajax.ActionLink("Dodaj autora", "Create", "Author", null, new AjaxOptions
+   {
+       HttpMethod = "GET",
+       InsertionMode = InsertionMode.Replace,
+       UpdateTargetId = "content",
+       LoadingElementId = "preloader",
+   }, new { @class = "waves-effect waves-light btn light-green", })
+    </p>
+
+    @{
+        if (Model.Count() > 0)
+        {
+            <table class="bordered highlight">
+                <tr>
+                    <th>Lp.</th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th></th>
+                </tr>
+                @{
+                    int i = 1;
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td><strong>@i.</strong></td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Ajax.RawActionLink(string.Format("<i class=\"material-icons\">create</i>"), "Edit", "Author",
+                   new { id = item.Id },
+                   new AjaxOptions
+                   {
+                       HttpMethod = "GET",
+                       InsertionMode = InsertionMode.Replace,
+                       UpdateTargetId = "content",
+                       LoadingElementId = "preloader",
+                   },
+                   new { @class = "waves-effect waves-light btn light-blue" })
+
+                                @Ajax.RawActionLink(string.Format("<i class=\"material-icons\">description</i>"), "Details", "Author",
+                   new { id = item.Id },
+                   new AjaxOptions
+                   {
+                       HttpMethod = "GET",
+                       InsertionMode = InsertionMode.Replace,
+                       UpdateTargetId = "content",
+                       LoadingElementId = "preloader",
+                   },
+                   new { @class = "waves-effect waves-light btn amber accent-3" })
+
+                                @Ajax.RawActionLink(string.Format("<i class=\"material-icons\">delete</i>"), "Delete", "Author",
+                   new { id = item.Id },
+                   new AjaxOptions
+                   {
+                       HttpMethod = "GET",
+                       InsertionMode = InsertionMode.Replace,
+                       UpdateTargetId = "content",
+                       LoadingElementId = "preloader",
+                   },
+                   new { @class = "waves-effect waves-light btn red darken-4" })
+
+                            </td>
+                        </tr>
+
+                        i++;
+                    }
+                }
+            </table>
+                    }
+                    else
+                    {
+                        <p class="no-records center-align">Brak rekordów w bazie.</p>
+                    }
+    }
+
+
+</div>
